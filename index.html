@@ -36,10 +36,10 @@
 
 					<a-col :span="3" class="warSlider">
 						War Count
-						<a-slider class="warSlider" v-model="recentCount" :min="1" :max="Object.keys(wars).length" />
+						<a-slider class="warSlider" v-model="recentCount" :min="1" :max="warCount" />
 					</a-col>
 					<a-col :span="1">
-					  <a-input-number v-model="recentCount" :min="1" :max="Object.keys(wars).length" style="marginLeft: 16px" />
+					  <a-input-number v-model="recentCount" :min="1" :max="warCount" style="marginLeft: 16px" />
 					</a-col>
 					<a-col :span="6">
 					</a-col>

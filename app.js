@@ -11,6 +11,8 @@ new Vue({
         wars:null,
         sortingMode:'stars',
 
+        warCount:null,
+
         
     },
 
@@ -264,12 +266,14 @@ new Vue({
 
             let out = null
 
-            if (this.countCurrent)
-                out =  warList.slice(warCount-this.recentCount, warCount)
-            else
-                out =  warList.slice(warCount-this.recentCount, warCount-1)
-
-
+            if (this.countCurrent){
+                out =  warList.slice(warCount-(this.recentCount+1)+1, warCount)
+                this.warCount = warCount
+            }
+            else{
+                out =  warList.slice(warCount-(this.recentCount+1), warCount-1)
+                this.warCount = warCount-1
+            }
             this.startingWarData = out[0]
 
             return out
