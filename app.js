@@ -34,23 +34,25 @@ new Vue({
                 })
             }
 
-        })
 
-        DB.getData("warlogs", (wars) => {
-            this.wars = wars
-            this.loadingComplet = true
+            DB.getData("warlogs", (wars) => {
+                this.wars = wars
+                this.loadingComplet = true
+    
+                if (!this.currentWarData){
+                    let times = Object.keys(this.wars)
+    
+                    this.currentWarData = this.wars[times[times.length-1]]
+                    this.startingWarData = this.recentWars[0]
+    
+                }
+    
+                console.log('this.wars', this.wars)
+    
+                console.log('recentWarMemberInfo', this.recentWarMemberInfo())
+            })
+    
 
-            if (!this.currentWarData){
-                let times = Object.keys(this.wars)
-
-                this.currentWarData = this.wars[times[times.length-1]]
-                this.startingWarData = this.recentWars[0]
-
-            }
-
-            console.log('this.wars', this.wars)
-
-            console.log('recentWarMemberInfo', this.recentWarMemberInfo())
         })
 
 

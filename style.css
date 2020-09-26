@@ -1,4 +1,8 @@
 
+p{font-size:120%;line-height:1.2;}
+
+
+
 #components-layout-demo-custom-trigger .trigger {
     font-size: 18px;
     line-height: 64px;
@@ -364,7 +368,7 @@
 
 
     width: calc(100% - 100px);    
-    height: calc(100%);
+    height: calc(100% - 115px);
     position: absolute;
     text-align: center;
     left: 50px;
@@ -390,3 +394,28 @@
     width: 100%;
     top: -45px;
   }
+
+  .warSlider {
+    transform: translateY(-12px);
+  }
+
+  .currentCheck {
+    transform: translateY(0px);
+  }
+/* 
+  .ant-list-item {
+    height:6vh;
+  }
+
+  .ant-list-item-meta-title {
+    font-size: 1.3vh;;
+  }
+
+  .ant-list-item-meta-description {
+    font-size: 14px;;
+
+  }
+
+  .ant-list-item-action strong {
+    font-size: 1.2vh;
+  } */
