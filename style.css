@@ -1,0 +1,392 @@
+
+#components-layout-demo-custom-trigger .trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  #components-layout-demo-custom-trigger .trigger:hover {
+    color: #1890ff;
+  }
+
+  #components-layout-demo-custom-trigger .logo {
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 16px;
+  }
+
+  .ant-card-head-title{
+    font-size: 40px;
+  }
+
+  .win {
+    background-color: rgba(0, 102, 0,0.2);
+    color:rgba(0, 102, 0,1) !important;
+  }
+
+  .tie {
+    background-color: rgba(0, 102, 255,0.2);
+    color:rgba(0, 102, 255,1) !important;
+  }
+
+  .loss {
+    background-color: rgba(153, 0, 0,0.2);
+    color:rgba(153, 0, 0,1) !important;
+  }
+
+  #my_dataviz {
+
+    position: absolute;
+    z-index: 100;
+    top: 150px;
+    right: 0px;
+    width: 50%;
+    height: 350px;
+
+  }
+
+  #my_dataviz_svg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+
+  }
+
+  .profile {
+    position: relative;
+    width: 45%;
+  }
+
+  #graphFilter {
+
+    display: block;
+    position: absolute;
+    left: calc(100% + 50px);
+    top: 0px;
+    z-index: 200;
+
+  }
+
+
+  .card-section {
+    background-color: rgb(230,230,230);
+  }
+
+  .battle-section {
+    background-color: white;
+
+  }
+
+  .battleRow {
+    width: 100%;
+    padding: 8px;
+    border-bottom: 1px solid white;
+    border-radius: 5px;
+  }
+
+  .battleRow:hover {
+    opacity:0.8;
+    cursor: pointer;
+  }
+
+  .battle-stats {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .axisWhite line{
+    fill: rgba(0,0,0,0.6);
+    stroke-width: 2;
+
+  }
+  
+  .axisWhite path{
+    stroke: rgba(0,0,0,0.6);
+  }
+  
+  .axisWhite text{
+    fill: rgba(0,0,0,0.6);
+    font-size: 8px;
+  }  
+
+  .axisWhite2 line{
+    fill: white;
+    stroke-width: 2;
+
+  }
+  
+  .axisWhite2 path{
+    stroke: white;
+  }
+  
+  .axisWhite2 text{
+    fill: white;
+    font-size: 6px;
+  }  
+
+  .ant-select-selection--single {
+    background-color: rgba(255,255,255,0.9);
+  }
+  
+  .ant-btn-primary {
+    background-color: black;
+    border-color: black;
+  }
+
+  .load-more {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 20px;
+  }
+
+  .loading-ph {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top:0px;
+    bottom: 0px;
+    z-index: 500;
+    background-color: rgb(230,230,230);
+  }
+
+  .loading-icon {
+    position: absolute;
+    left: 50%;
+    top:50%;
+    transform: translate(-50%,-50%);
+    font-size: 100px;
+    text-align: center;
+  }
+
+  .loading-icon-text {
+    font-size: 20px;
+
+  }
+
+  .brawler-card {
+    width: calc(33% - 10px);
+    float: left;
+    margin: 6px;
+    position: relative;
+    height: 130px;    
+  }
+
+  .brawlers-section {
+    margin-top: 10px;
+  }
+
+  .brawler-rank {
+    border-radius: 31px;
+    display: inline-block;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    width: 23px;
+    text-align: center;
+  }
+
+  .level35 {
+    border: 1px solid rgb(153, 0, 153);
+    background-color: rgb(153, 0, 153);
+  }
+
+  .level30 {
+    border: 1px solid rgb(204, 0, 0);
+    background-color: rgb(204, 0, 0);
+  }
+
+  .level25 {
+    border: 1px solid rgb(0, 204, 102);
+    background-color: rgb(0, 204, 102);
+  }
+
+  .level20 {
+    border: 1px solid rgb(255, 102, 204);
+    background-color: rgb(255, 102, 204);
+  }
+
+  .level15 {
+    border: 1px solid rgb(51, 204, 255);
+    background-color: rgb(51, 204, 255);
+  }
+
+  .level10 {
+    
+    border: 1px solid rgb(255, 153, 0);
+    background-color: rgb(255, 153, 0);
+  }
+
+  .level5 {
+    border: 1px solid rgb(204, 204, 255);
+    background-color: rgb(204, 204, 255);
+  }
+
+  .level0 {
+    border: 1px solid rgb(255, 153, 0);
+    background-color: rgb(255, 153, 0);
+
+  }
+
+
+
+
+  .brawler-stat-title {
+    font-size: 9px;
+  }
+
+  .brawler-sp {
+    display: inline-block;
+    font-size: 8px;
+    /* text-align: right; */
+    /* position: absolute; */
+    top: 20px;
+    right: 20px;
+    width: 100%;
+  }
+
+  .brawler-sp > p{
+    color: white;
+    border: 1px solid white;
+    background-color: black;
+    padding: 1px;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 49%;
+    float: left;
+
+  }
+
+  .ant-card {
+    color:black;
+  }
+
+  .brawler-svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+  }
+
+  .brawler-svg > svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background-color: black;
+    opacity: 0.8;
+
+  }
+
+  .col-3 {
+    width:33%;
+    float: left;
+    margin-bottom: 10px;
+  }
+
+  .col-4 {
+    width:24.5%;
+    float: left;
+    margin-bottom: 10px;
+  }
+
+  .col-2 {
+    width:49%;
+    float: left;
+    margin-bottom: 3px;
+  }
+
+  .col-2>p {
+    margin: 0px;
+  }
+
+  .battle-data {
+    margin-top: 8px;
+    padding-top: 10px;
+    border-top: 1px solid white;
+  }
+
+  .battle-data-players {
+    font-size: 11px;
+  }
+  .battle-data-teams {
+    font-size: 10px;
+  }
+
+  .col-5 {
+    width:19.5%;
+    float: left;
+    margin-bottom: 3px;
+  }
+
+  .col-5>p {
+    margin: 0px;
+  }
+
+  .battle-data-team {
+    width: 100%;
+    display: inline-block;
+  }
+
+
+  .ph-title {
+    position: absolute;
+    left: 50%;
+    top:30px;
+    font-size: 20px;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .ph-title-title {
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  .ph-bottom {
+    position: absolute;
+    left: 50%;
+    bottom:50px;
+    font-size: 20px;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+
+  .member-list {
+
+
+    width: calc(100% - 100px);    
+    height: calc(100%);
+    position: absolute;
+    text-align: center;
+    left: 50px;
+    /* transform: translateX(-50%); */
+    border: 3px solid rgba(0,0,0,0.1);
+    top: 70px;
+    padding: 20px;
+
+  }
+
+  .scroller {
+
+    overflow-y: scroll;
+    height: calc(100%);
+    left: 0px;
+    top: -30px;
+    position: relative;
+    width: 100%;
+  }
+
+  .member-header {
+    position: absolute;
+    width: 100%;
+    top: -45px;
+  }

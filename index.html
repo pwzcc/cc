@@ -1,0 +1,110 @@
+
+<head>      
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-database.js"></script>
+	<script src="https://d3js.org/d3.v4.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <!-- <script src="https://unpkg.com/vue"></script>
+
+    <script src="./vue/vue.js"></script> -->
+    <script src="./vue/antd.min.js"></script>
+    <link rel="stylesheet" href="./vue/antd.min.css" type="text/css" />
+    <link rel="stylesheet" href="./style.css" type="text/css" />
+    
+</head>
+
+
+<body>
+
+    <div id="app">			
+        <template v-if="loadingComplet">
+			<!-- {{recentWarMemberInfo()}} -->
+
+			<a-card class="member-list">
+				<a-row class="member-header">
+					<a-col :span="2">
+						War Count
+					</a-col>
+					<a-col :span="4">
+					  <a-slider v-model="recentCount" :min="1" :max="Object.keys(wars).length" />
+					</a-col>
+					<a-col :span="1">
+					  <a-input-number v-model="recentCount" :min="1" :max="Object.keys(wars).length" style="marginLeft: 16px" />
+					</a-col>
+					<a-col :span="3">
+					</a-col>
+					
+					<a-col :span="12" v-if="startingWarData && currentWarData">
+						War Range
+						<a-icon type="radar-chart"></a-icon>
+						{{toLocalTime(startingWarData['startTime'])}} 
+						<a-icon type="swap-right"></a-icon>
+						{{toLocalTime(currentWarData['startTime'])}}
+					</a-col>
+
+
+				</a-row>
+
+
+				<div class="scroller">
+				
+					<template>
+					  
+						<a-list
+						class="demo-loadmore-list"
+						item-layout="horizontal"
+						:data-source="recentWarMemberInfo()"
+					  >
+						<a-list-item slot="renderItem" slot-scope="item, index">
+						  <div slot="actions">Total Stars: <strong>{{item.stars}}</strong></div>
+						  <div slot="actions">Average Stars: <strong>{{item.averageStar.toFixed(1)}}</strong></div>
+						  <div slot="actions">Total Attacks: <strong>{{item.attack_count}}</strong></div>
+						  <div slot="actions">Average Attack Percentage: <strong>{{item.avePercentage.toFixed(1)}}</strong></div>
+	
+	
+						  <a-list-item-meta
+							:description="'TH Lvl: '+item.th_level"
+						  >
+							<div slot="title">{{ item.name }}</div>
+							<a-avatar
+							  slot="avatar"
+							>
+							{{index+1}}
+							</a-avatar>>
+						  </a-list-item-meta>
+	
+						</a-list-item>
+					  </a-list>
+					</template>
+				</div>
+	
+
+
+			</a-card>
+
+
+
+
+
+
+
+
+        </template>
+  
+      
+      </div>
+</body>
+
+
+
+
+
+<script src="./api.js"></script>
+<script src="./db.js"></script>
+<script src="./app.js"></script>
+
+
