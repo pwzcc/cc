@@ -27,25 +27,48 @@
 			<a-card class="member-list">
 				<a-row class="member-header">
 
-					<a-col :span="6" class="currentCheck">
+					<!-- <a-col :span="6" class="currentCheck">
 						Include Current War
 						<a-switch checked-children="Yes" un-checked-children="No" default-checked v-model="countCurrent" 
 						style="marginLeft: 5px"
 						/>
-					</a-col>
+					</a-col> -->
 
 					<a-col :span="3" class="warSlider">
 						War Count
 						<a-slider class="warSlider" v-model="recentCount" :min="1" :max="warCount" />
 					</a-col>
 					<a-col :span="1">
-					  <a-input-number v-model="recentCount" :min="1" :max="warCount" style="marginLeft: 16px" />
+					  <a-input-number v-model="recentCount" :min="1" :max="warCount" style="marginLeft: 5px" />
 					</a-col>
 					<a-col :span="6">
 					</a-col>
+  
+					<a-col :span="5">
+						Sort by: 
+						<a-select default-value="1" style="width: 120px" @change="handleSortChange">
+							<a-select-option value="1">
+								Total Stars
+							</a-select-option>
+							<a-select-option value="2">
+								Average Stars
+							</a-select-option>
+							<a-select-option value="3">
+								Total Attacks
+							</a-select-option>
+							<a-select-option value="4">
+								Average Attack
+							</a-select-option>
+							<a-select-option value="5">
+								Attack Percentage
+							</a-select-option>
+	
+						  </a-select>
+					</a-col>
 
 
-					<a-col :span="12" v-if="startingWarData && currentWarData" style="float:right;">
+
+					<a-col :span="9" v-if="startingWarData && currentWarData" style="float:right;">
 						War Range
 						<a-icon type="radar-chart"></a-icon>
 						{{toLocalTime(startingWarData['startTime'])}} 
@@ -70,6 +93,7 @@
 						  <div slot="actions">Total Stars: <strong>{{item.stars}}</strong></div>
 						  <div slot="actions">Average Stars: <strong>{{item.averageStar.toFixed(1)}}</strong></div>
 						  <div slot="actions">Total Attacks: <strong>{{item.attack_count}}</strong></div>
+						  <div slot="actions">Average Attack: <strong>{{item.aveAttack.toFixed(1)}}</strong></div>
 						  <div slot="actions">Average Attack Percentage: <strong>{{item.avePercentage.toFixed(1)}}</strong></div>
 	
 	

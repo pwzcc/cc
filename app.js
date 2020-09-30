@@ -9,8 +9,7 @@ new Vue({
         recentCount:3,
         countCurrent:true,
         wars:null,
-        sortingMode:'stars',
-
+        sortingMode:'1',
         warCount:null,
 
         
@@ -63,6 +62,11 @@ new Vue({
 
 
     methods: {
+        handleSortChange:function (value){
+            this.sortingMode = value
+            console.log('this.sortingMode', this.sortingMode)
+
+        },
 
         recentWarMemberInfo: function(){
             let memberInfo = {}
@@ -101,10 +105,12 @@ new Vue({
                 if(memberInfo[tag]['attack_count']>0){
                     memberInfo[tag]['averageStar'] = memberInfo[tag]['stars'] / memberInfo[tag]['attack_count']
                     memberInfo[tag]['avePercentage'] = memberInfo[tag]['avePercentage'] / memberInfo[tag]['count']
+                    memberInfo[tag]['aveAttack'] = memberInfo[tag]['attack_count'] / memberInfo[tag]['count']
                 }
                 else{
                     memberInfo[tag]['averageStar'] = 0
-                    memberInfo[tag]['avePercentage'] = 0                
+                    memberInfo[tag]['avePercentage'] = 0       
+                    memberInfo[tag]['aveAttack'] = 0
                 }           
 
 
@@ -120,8 +126,20 @@ new Vue({
 
             })
             
-            if (this.sortingMode == 'stars')
+            if (this.sortingMode == '1')
                 memberLst.sort((a, b) => (a.stars < b.stars) ? 1 : -1)
+            if (this.sortingMode == '2')
+                memberLst.sort((a, b) => (a.averageStar < b.averageStar) ? 1 : -1)
+            if (this.sortingMode == '3')
+                memberLst.sort((a, b) => (a.attack_count < b.attack_count) ? 1 : -1)
+            if (this.sortingMode == '4')
+                memberLst.sort((a, b) => (a.aveAttack < b.aveAttack) ? 1 : -1)
+            if (this.sortingMode == '5')
+                memberLst.sort((a, b) => (a.avePercentage < b.avePercentage) ? 1 : -1)
+
+
+
+
 
             return memberLst
             

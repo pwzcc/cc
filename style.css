@@ -419,3 +419,8 @@ p{font-size:120%;line-height:1.2;}
   .ant-list-item-action strong {
     font-size: 1.2vh;
   } */
+
+  .ant-input-number{
+    width: 60px;
+
+  }
