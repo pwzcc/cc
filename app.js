@@ -80,6 +80,7 @@ new Vue({
                         memberInfo[tag]['count'] = 1
                     }
                     else{
+                        memberInfo[tag]['name'] = info['name']
                         memberInfo[tag]['count'] = memberInfo[tag]['count'] + 1
                         Object.keys(info).forEach((key) => {
                             let val = info[key]
