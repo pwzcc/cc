@@ -146,7 +146,12 @@ new Vue({
         },
 
         warMemberInfo: function(war){
-            let members = war.clan.members
+            let members = null
+            if (war.clan.name == "Ground Truth"){
+                members = war.clan.members
+            }else{
+                members = war.opponent.members
+            }
 
             let memberInfo = {}
 
