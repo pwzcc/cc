@@ -367,11 +367,11 @@ p{font-size:120%;line-height:1.2;}
   .member-list {
 
 
-    width: calc(100% - 100px);    
-    height: calc(100% - 115px);
+    width: 100%;    
+    height: calc(100% - 100px);
     position: absolute;
     text-align: center;
-    left: 50px;
+    
     /* transform: translateX(-50%); */
     border: 3px solid rgba(0,0,0,0.1);
     top: 70px;

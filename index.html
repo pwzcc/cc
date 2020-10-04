@@ -41,7 +41,7 @@
 					<a-col :span="1">
 					  <a-input-number v-model="recentCount" :min="1" :max="warCount" style="marginLeft: 5px" />
 					</a-col>
-					<a-col :span="6">
+					<a-col :span="4">
 					</a-col>
   
 					<a-col :span="5">
@@ -68,7 +68,7 @@
 
 
 
-					<a-col :span="9" v-if="startingWarData && currentWarData" style="float:right;">
+					<a-col :span="9" v-if="startingWarData && currentWarData" style="float:right; margin-right:30px;">
 						War Range
 						<a-icon type="radar-chart"></a-icon>
 						{{toLocalTime(startingWarData['startTime'])}} 
