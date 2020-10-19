@@ -32,27 +32,29 @@ new Vue({
                 DB.syncData(warlog, `warlogs/${this.currentStartTime}`, ()=>{
                     console.log('data saved')
 
+
+                    DB.getData("warlogs", (wars) => {
+                        this.wars = wars
+                        this.loadingComplet = true
+            
+                        if (!this.currentWarData){
+                            let times = Object.keys(this.wars)
+            
+                            this.currentWarData = this.wars[times[times.length-1]]
+                            this.startingWarData = this.recentWars[0]
+            
+                        }
+            
+                        console.log('this.wars', this.wars)
+            
+                        console.log('recentWarMemberInfo', this.recentWarMemberInfo())
+                    })
+            
                 })
             }
 
         })
 
-        DB.getData("warlogs", (wars) => {
-            this.wars = wars
-            this.loadingComplet = true
-
-            if (!this.currentWarData){
-                let times = Object.keys(this.wars)
-
-                this.currentWarData = this.wars[times[times.length-1]]
-                this.startingWarData = this.recentWars[0]
-
-            }
-
-            console.log('this.wars', this.wars)
-
-            console.log('recentWarMemberInfo', this.recentWarMemberInfo())
-        })
 
         
 
@@ -69,19 +71,45 @@ new Vue({
         },
 
         recentWarMemberInfo: function(){
-            let memberInfo = {}
+
+            let tempInfos = []
 
             this.recentWars.forEach(war => {
                 let tempInfo = this.warMemberInfo(war)
+
+                let attack_chance_count = 0
                 Object.keys(tempInfo).forEach((tag) => {
                     let info = tempInfo[tag]
+
+                    if (info['attack_count'] > attack_chance_count){
+                        attack_chance_count = info['attack_count']
+                    }
+                })
+
+                tempInfo['attack_chance_count'] = attack_chance_count
+
+                tempInfos.push(tempInfo)
+            })
+
+
+            let memberInfo = {}
+            tempInfos.forEach(tempInfo => {
+                let attack_chance_count = tempInfo['attack_chance_count']
+
+                Object.keys(tempInfo).forEach((tag) => {
+                    let info = tempInfo[tag]
+
                     if (!(tag in memberInfo)){
                         memberInfo[tag] = info
                         memberInfo[tag]['count'] = 1
+                        memberInfo[tag]['chance_count'] = attack_chance_count
+
                     }
                     else{
                         memberInfo[tag]['name'] = info['name']
                         memberInfo[tag]['count'] = memberInfo[tag]['count'] + 1
+                        memberInfo[tag]['chance_count'] += attack_chance_count
+
                         Object.keys(info).forEach((key) => {
                             let val = info[key]
 
@@ -96,28 +124,44 @@ new Vue({
 
                     }
 
+
                 })
 
 
+
+
             })
-            
 
             Object.keys(memberInfo).forEach(tag => {
                 if(memberInfo[tag]['attack_count']>0){
                     memberInfo[tag]['averageStar'] = memberInfo[tag]['stars'] / memberInfo[tag]['attack_count']
                     memberInfo[tag]['avePercentage'] = memberInfo[tag]['avePercentage'] / memberInfo[tag]['count']
-                    memberInfo[tag]['aveAttack'] = memberInfo[tag]['attack_count'] / memberInfo[tag]['count']
+                    // memberInfo[tag]['aveAttack'] = memberInfo[tag]['attack_count'] / memberInfo[tag]['count']
+
+                    memberInfo[tag]['attackRate'] = (memberInfo[tag]['attack_count']/memberInfo[tag]['chance_count']).toFixed(2)
+
                 }
                 else{
                     memberInfo[tag]['averageStar'] = 0
                     memberInfo[tag]['avePercentage'] = 0       
-                    memberInfo[tag]['aveAttack'] = 0
+                    // memberInfo[tag]['aveAttack'] = 0
+                    memberInfo[tag]['attackRate'] = 0
                 }           
+
+                if (memberInfo[tag]['chance_count'] == 0){
+                    memberInfo[tag]['attackRate'] = 'N/A'
+                }
 
 
             })
 
+
             let memberLst = []
+
+            console.log('memberInfo', memberInfo)
+
+            delete memberInfo['attack_chance_count']; 
+
 
             Object.keys(memberInfo).forEach(tag => {
                 let member = memberInfo[tag]
@@ -134,7 +178,7 @@ new Vue({
             if (this.sortingMode == '3')
                 memberLst.sort((a, b) => (a.attack_count < b.attack_count) ? 1 : -1)
             if (this.sortingMode == '4')
-                memberLst.sort((a, b) => (a.aveAttack < b.aveAttack) ? 1 : -1)
+                memberLst.sort((a, b) => (a.attackRate < b.attackRate) ? 1 : -1)
             if (this.sortingMode == '5')
                 memberLst.sort((a, b) => (a.avePercentage < b.avePercentage) ? 1 : -1)
 

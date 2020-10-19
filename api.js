@@ -2,8 +2,9 @@
 var API = API || {}
 
 API.currentWar = function(cb){
-    var url='http://ec2-18-221-120-150.us-east-2.compute.amazonaws.com:8000/py';
+    // var url='http://ec2-18-221-120-150.us-east-2.compute.amazonaws.com:8000/py';
     // var url = 'https://exuberant-paperback.glitch.me/ccwar';
+    var url = 'http://localhost:8000/py'
 
     $.ajax({
         url: url,
